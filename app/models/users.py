@@ -4,6 +4,9 @@ from datetime import date, datetime
 from sqlalchemy import Boolean, DateTime, String, Text, Date
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.models.notifications import NotificationSettings
+from app.models.profiles import Profile
+
 from ..database.base_class import Base
 from .base_mixins import BaseUUIDModelMixin, SoftDeleteMixin
 
@@ -53,6 +56,12 @@ class User(Base, BaseUUIDModelMixin, SoftDeleteMixin):
         viewonly=True,
     )
     activity_logs: Mapped[list["ActivityLog"]] = relationship("ActivityLog", back_populates="user")
+
+    profile: Mapped["Profile"] = relationship("Profile", back_populates="user", uselist=False, cascade="all, delete-orphan")
+
+    notification_settings: Mapped["NotificationSettings"] = relationship("NotificationSettings", back_populates="user", uselist=False, cascade="all, delete-orphan")
+
+
 
     # Helper methods
     def to_schema_dict(self) -> dict:
