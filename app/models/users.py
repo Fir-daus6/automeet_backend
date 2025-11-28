@@ -6,6 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.notifications import NotificationSettings
 from app.models.profiles import Profile
+from app.models.team_roles import team_members_table
 
 from ..database.base_class import Base
 from .base_mixins import BaseUUIDModelMixin, SoftDeleteMixin
@@ -60,7 +61,10 @@ class User(Base, BaseUUIDModelMixin, SoftDeleteMixin):
     profile: Mapped["Profile"] = relationship("Profile", back_populates="user", uselist=False, cascade="all, delete-orphan")
 
     notification_settings: Mapped["NotificationSettings"] = relationship("NotificationSettings", back_populates="user", uselist=False, cascade="all, delete-orphan")
+    
+    roles = relationship("TeamRole", secondary=team_members_table, back_populates="members",)
 
+    team_invites = relationship("TeamInvite", back_populates="invited_by")
 
 
     # Helper methods
