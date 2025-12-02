@@ -1,4 +1,3 @@
-# models/roles.py
 from typing import TYPE_CHECKING, Optional
 from sqlalchemy import Boolean, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship

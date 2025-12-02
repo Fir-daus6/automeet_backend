@@ -55,5 +55,4 @@ class VerificationCode(BaseIDModelMixin, Base):
         )
 
     def is_expired(self) -> bool:
-        """Return True if the code has expired."""
         return datetime.now(tz=timezone.utc) >= self.expires_at

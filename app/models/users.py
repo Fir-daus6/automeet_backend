@@ -1,4 +1,3 @@
-# models/user.py
 from typing import TYPE_CHECKING, Optional
 from datetime import date, datetime
 from sqlalchemy import Boolean, DateTime, String, Text, Date
@@ -35,7 +34,6 @@ class User(Base, BaseUUIDModelMixin, SoftDeleteMixin):
     gender: Mapped[Optional[str]] = mapped_column(String(10), nullable=True)
     address: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     date_of_birth: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
-    avatar: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     bio: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     status: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
 

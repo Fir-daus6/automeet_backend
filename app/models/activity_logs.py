@@ -1,4 +1,3 @@
-# models/activity_logs.py
 from typing import Union, Optional
 from sqlalchemy import ForeignKey, String, Boolean, JSON, Text, DateTime
 from sqlalchemy.orm import relationship, Mapped, mapped_column

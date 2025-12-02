@@ -1,4 +1,3 @@
-# models/user_roles.py
 from typing import TYPE_CHECKING
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
