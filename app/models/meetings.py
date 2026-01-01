@@ -16,7 +16,7 @@ class Meeting(Base, BaseUUIDModelMixin):
     __tablename__ = "meetings"
 
     title: Mapped[str] = mapped_column(String(100), nullable=False)
-    scheduled_on: Mapped[date] = mapped_column(Date, nullable=False)
+    scheduled_for: Mapped[date] = mapped_column(Date, nullable=False)
     scheduled_at: Mapped[time] = mapped_column(Time, nullable=False)
     duration: Mapped[int] = mapped_column(Integer, nullable=False)
     platform: Mapped[str] = mapped_column(String(50), nullable=False)

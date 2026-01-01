@@ -5,9 +5,12 @@ from .base_schema import BaseUUIDSchema, BaseResponseSchema, BaseTotalCountRespo
 from .base_filters import BaseFilters
 
 
+
+
+
 class MeetingBaseSchema(BaseModel):
     title: str = Field(..., description="Title of the meeting")
-    scheduled_on: date = Field(..., description="Date when the meeting is scheduled")
+    scheduled_for: date = Field(..., description="Date when the meeting is scheduled")
     scheduled_at: time = Field(..., description="Time when the meeting is scheduled")
     duration: int = Field(..., description="Duration of the meeting in minutes")
     platform: str = Field(..., description="Platform used for the meeting (e.g., Zoom, Teams)")
@@ -42,7 +45,7 @@ class MeetingTotalCountListResponseSchema(BaseTotalCountResponseSchema):
 
 class MeetingFilters(BaseFilters):
     title: Optional[str] = Field(None, description="Filter by meeting title")
-    scheduled_on: Optional[date] = Field(None, description="Filter by scheduled date")
+    scheduled_for: Optional[date] = Field(None, description="Filter by scheduled date")
     scheduled_at: Optional[time] = Field(None, description="Filter by scheduled time")
     duration: Optional[int] = Field(None, description="Filter by duration in minutes")
     platform: Optional[str] = Field(None, description="Filter by meeting platform")
